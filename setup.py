@@ -43,5 +43,9 @@ setup(name='ansible',
          'bin/ansible-pull',
          'bin/ansible-doc'
       ],
-      data_files=data_files
+      data_files=data_files,
+      entry_points="""
+      [console_scripts]
+      ansible = ansible.main.cli:main
+      """,
 )

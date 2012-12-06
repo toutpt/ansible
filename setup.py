@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from setuptools import setup, find_packages
 
 import os
 import sys
@@ -6,7 +7,7 @@ from glob import glob
 
 sys.path.insert(0, os.path.abspath('lib'))
 from ansible import __version__, __author__
-from distutils.core import setup
+#from distutils.core import setup
 
 # find library modules
 from ansible.constants import DIST_MODULE_PATH
@@ -38,14 +39,17 @@ setup(name='ansible',
          'ansible.callback_plugins',
       ],
       scripts=[
-         'bin/ansible',
-         'bin/ansible-playbook',
-         'bin/ansible-pull',
-         'bin/ansible-doc'
+#         'bin/ansible',
+#         'bin/ansible-playbook',
+#         'bin/ansible-pull',
+#         'bin/ansible-doc'
       ],
       data_files=data_files,
       entry_points="""
       [console_scripts]
       ansible = ansible.main.cli:main
+      ansible-doc = ansible.main.clidoc:main
+      ansible-playbook = ansible.main.cliplaybook:main
+      ansible-pull = ansible.main.clipull:main
       """,
 )
